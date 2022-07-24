@@ -34,7 +34,7 @@ userRouter.post("/login", asyncHandler(
 
 
 //Register
-userRouter.post("/register", protect, asyncHandler(
+userRouter.post("/register", asyncHandler(
     async (req, res) => {
         const { name, email, password } = req.body;
         const userExists = await User.findOne({ email });
