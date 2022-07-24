@@ -36,7 +36,7 @@ userRouter.post("/login", asyncHandler(
 //Register
 userRouter.post("/register", asyncHandler(
     async (req, res) => {
-        const { name, email, password } = req.body;
+        const { name, email, password,isAdmin } = req.body;
         const userExists = await User.findOne({ email });
 
         if (userExists) {
@@ -44,7 +44,7 @@ userRouter.post("/register", asyncHandler(
             throw new Error("User with this email already registered")
         } else {
             const user = await User.create({
-                name, email, password
+                name, email, password,isAdmin
             });
             if (user) {
                 res.status(201).json({
