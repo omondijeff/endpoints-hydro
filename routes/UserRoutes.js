@@ -131,7 +131,7 @@ userRouter.get("/",protect,admin,asyncHandler(
 //Delete
 userRouter.delete("/:id",protect,admin, asyncHandler(
     async (req, res) => {
-        const user = await Uder.findById(req.params.id);
+        const user = await User.findById(req.params.id);
         if (user) {
             await user.remove()
             res.json({message:"User deleted"});
