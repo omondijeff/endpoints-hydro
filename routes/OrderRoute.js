@@ -31,6 +31,15 @@ orderRouter.post("/", protect, asyncHandler(
 ),
 );
 
+//ADMIN Get all orders
+orderRouter.get("/admin/all", protect,admin, asyncHandler(
+    async (req, res) => {
+        const orders = await Order.find({}).sort({_id:-1}).populate("user", "name email");    
+            res.json( orders );
+    },
+ ),
+);
+
 //Get Order By Id
 orderRouter.get("/:id", protect, asyncHandler(
     async (req, res) => {
@@ -58,14 +67,7 @@ orderRouter.get("/", protect, asyncHandler(
  ),
 );
 
-//ADMIN Get all orders
-orderRouter.get("/all", protect,admin, asyncHandler(
-    async (req, res) => {
-        const orders = await Order.find({}).sort({_id:-1}).populate("user", "name email");    
-            res.json( orders );
-    },
- ),
-);
+
 
 
 
