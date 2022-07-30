@@ -6,7 +6,7 @@ import generateToken from "../utils/generateToken.js";
 
 const userRouter = express.Router();
 
-//GET ALL PRODUCTS
+//Login
 userRouter.post("/login", asyncHandler(
     async (req, res) => {
         const { email, password } = req.body;
@@ -96,8 +96,9 @@ userRouter.put("/profile", protect, asyncHandler(
         if (user) {
             user.name=req.body.name || user.name;
             user.email=req.body.email || user.email;
-            user.isAdmin=req.body.isAdmin || user.isAdmin;
-
+            if(req.body.isAdmin){
+                user.isAdmin=req.body.isAdmin
+            }
             if(req.body.password){
                 user.password =req.body.password
             }
@@ -134,7 +135,7 @@ userRouter.delete("/:id",protect,admin, asyncHandler(
         const user = await User.findById(req.params.id);
         if (user) {
             await user.remove()
-            res.json({message:"User deleted"});
+            res.json({message:"User deleted Successfully"});
         } else {
             res.status(404);
             //.json({message:"Product Not Found"})
