@@ -7,12 +7,14 @@ import { errorHandler, notFound } from "./middleware/Errors.js";
 import userRouter from "./routes/UserRoutes.js";
 import orderRouter from "./routes/OrderRoute.js";
 import surveyRoute from "./routes/SurveyRoutes.js";
+const cors = require("cors");
 
 
 dotenv.config();
 connectDatabase();
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 //Api
 app.use("/api/import",ImportData);
