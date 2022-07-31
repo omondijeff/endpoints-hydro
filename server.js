@@ -7,7 +7,7 @@ import { errorHandler, notFound } from "./middleware/Errors.js";
 import userRouter from "./routes/UserRoutes.js";
 import orderRouter from "./routes/OrderRoute.js";
 import surveyRoute from "./routes/SurveyRoutes.js";
-const cors = require("cors");
+import cors from "cors";
 
 
 dotenv.config();
