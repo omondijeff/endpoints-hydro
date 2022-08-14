@@ -25,6 +25,11 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       default: true,
     },
+    profileImage: {
+      type: String,
+      default:
+        "https://res.cloudinary.com/compact-hydro-solutions/image/upload/v1660477279/avatar-png-icon-2-Transparent-Images_srpjye.png",
+    },
   },
   {
     timestamps: true,
