@@ -77,7 +77,7 @@ userRouter.get(
         email: user.email,
         isAdmin: user.isAdmin,
         createdAt: user.createdAt,
-        // profileImage: user.profileImage,
+        profileImage: user.profileImage,
       });
     } else {
       res.status(404);
